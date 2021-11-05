@@ -39,11 +39,11 @@ class ValidateMethodBuilder {
         addNotNullChecks(validateField);
         final int minSize = validateField.getMinSize();
         if (minSize != ValidateField.DEF_MIN_SIZE) {
-            addSizeCheck(">", minSize, validateField.isNotNull(), validateField.getElement());
+            addSizeCheck("<", minSize, validateField.isNotNull(), validateField.getElement());
         }
         final int maxSize = validateField.getMaxSize();
         if (maxSize != ValidateField.DEF_MAX_SIZE) {
-            addSizeCheck("<", maxSize, validateField.isNotNull(), validateField.getElement());
+            addSizeCheck(">", maxSize, validateField.isNotNull(), validateField.getElement());
         }
     }
 
