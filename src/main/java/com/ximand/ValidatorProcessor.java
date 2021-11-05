@@ -21,12 +21,12 @@ public class ValidatorProcessor extends AbstractProcessor {
 
     @Override
     public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.RELEASE_15;
+        return SourceVersion.RELEASE_8;
     }
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return new HashSet<>() {{
+        return new HashSet<String>() {{
             add(Validatable.class.getCanonicalName());
             add(Validate.class.getCanonicalName());
         }};

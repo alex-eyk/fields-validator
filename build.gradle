@@ -3,10 +3,22 @@ plugins {
 }
 
 group 'com.ximand'
-version '1.0.1-alpha'
+version '1.0.1'
 
 repositories {
     mavenCentral()
+}
+
+task fatJar(type: Jar) {
+    manifest.from jar.manifest
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
 }
 
 dependencies {
