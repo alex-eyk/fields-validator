@@ -2,14 +2,12 @@ package com.ximand;
 
 import com.google.auto.service.AutoService;
 
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.Processor;
-import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.util.Elements;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +15,9 @@ import java.util.Set;
 
 @AutoService(Processor.class)
 public class ValidatorProcessor extends AbstractProcessor {
+
+    private Elements elementUtils;
+    private Filer filer;
 
     @Override
     public SourceVersion getSupportedSourceVersion() {
@@ -32,43 +33,36 @@ public class ValidatorProcessor extends AbstractProcessor {
     }
 
     @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+        this.elementUtils = processingEnv.getElementUtils();
+        this.filer = processingEnv.getFiler();
+    }
+
+    @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        final Set<? extends Element> annotatedElements = roundEnv
+        final Set<? extends Element> annotatedClasses = roundEnv
                 .getElementsAnnotatedWith(Validatable.class);
-        for (Element element : annotatedElements) {
+        for (Element element : annotatedClasses) {
             try {
                 final TypeElement typeElement = (TypeElement) element;
-                final Class<?> class_ = getClass(typeElement);
-                final List<ValidatableField> validatableFields = new ArrayList<>();
-                for (Field field : class_.getDeclaredFields()) {
-                    if (field.isAnnotationPresent(Validate.class) == false) {
+                final List<ValidateField> validatableFields = new ArrayList<>();
+                for (Element enclosedElement : elementUtils.getAllMembers(typeElement)) {
+                    final Validate validate = enclosedElement.getAnnotation(Validate.class);
+                    if (validate == null) {
                         continue;
                     }
-                    final Validate validate = field.getAnnotation(Validate.class);
-                    validatableFields.add(
-                            new ValidatableField(field)
-                                    .setNotNull(validate.notNull())
-                                    .setMinSize(validate.minSize())
-                                    .setMaxSize(validate.maxSize())
-                    );
+                    validatableFields.add(ValidateField.createByValidate(enclosedElement, validate));
                 }
-                final ValidatorCodeGenerator codeGenerator = new ValidatorCodeGenerator(validatableFields);
-                codeGenerator.generate(class_);
+                final ValidatorCodeGenerator codeGenerator = new ValidatorCodeGenerator(elementUtils, filer);
+                codeGenerator.generate(typeElement, validatableFields);
             } catch (ClassCastException e) {
                 throw new IllegalStateException("Only class can be annotated with @Validatable", e);
             } catch (IOException e) {
                 throw new IllegalStateException("Unable to create java files", e);
             }
         }
-        return false;
-    }
-
-    private Class<?> getClass(TypeElement element) {
-        try {
-            return Class.forName(element.toString());
-        } catch (Exception e) {
-            throw new IllegalStateException("Unable to find class. Element: " + element.toString(), e);
-        }
+        return true;
     }
 
 }
