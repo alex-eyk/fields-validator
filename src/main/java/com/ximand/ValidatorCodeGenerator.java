@@ -3,6 +3,7 @@ package com.ximand;
 import com.squareup.javapoet.*;
 
 import javax.annotation.processing.Filer;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
@@ -45,6 +46,7 @@ final class ValidatorCodeGenerator {
         final String typeName = validateType.getSimpleName() + CLASS_NAME_SUFFIX;
         return TypeSpec
                 .classBuilder(typeName)
+                .addModifiers(Modifier.PUBLIC)
                 .addSuperinterface(ParameterizedTypeName.get(
                         ClassName.get(Validator.class), TypeName.get(validateType.asType())
                 ))
