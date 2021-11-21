@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.ximand'
-version '2.0.0-beta'
+version '2.0.0'
 
 repositories {
     mavenCentral()
@@ -12,8 +12,7 @@ repositories {
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Implementation-Version': version,
-                'Main-Class': 'com.mkyong.DateUtils'
+                'Implementation-Version': version
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar

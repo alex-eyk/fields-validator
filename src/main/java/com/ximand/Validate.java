@@ -28,7 +28,7 @@ public @interface Validate {
 
     /**
      * Maximum size of value. This property works for {@code String} (in this case, the
-     * number of characters in the string will be validate, {@code Collection} and arrays.
+     * number of characters in the string will be validate, {@code Collection} and array.
      */
     int maxSize() default Integer.MAX_VALUE;
 

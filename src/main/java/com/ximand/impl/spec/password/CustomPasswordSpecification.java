@@ -92,8 +92,8 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set special characters, that can be use in password. By default can be user: '@', '$', '!',
-     * '%', '*', '#', '?', '&'.
+     * Set special characters, that can be use in password. By default can be user: '_', '.', '(',
+     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '&', '\'
      *
      * @param allowedSpecialChars A string of special characters that can be used (e.g. "@$!").
      */
@@ -106,8 +106,8 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set special characters, that can be use in password. By default can be user: '@', '$', '!',
-     * '%', '*', '#', '?', '&'.
+     * Set special characters, that can be use in password. By default can be user: '_', '.', '(',
+     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '&', '\'
      *
      * @param allowedSpecialChars An array of special characters that can be used.
      */

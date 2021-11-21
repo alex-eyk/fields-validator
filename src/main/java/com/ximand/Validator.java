@@ -46,6 +46,25 @@ public interface Validator<T> {
      * </code>
      * That is, if the field is limited in size, but has null reference {@code null}, <b>it
      * will be considered valid</b>
+     * <p>
+     * Annotated with {@code @Validate} fields also can be annotated with {@code @Regex}. In
+     * this case fields, will be validate by regular expression (if {@code field != null}).
+     * Will also validate conditions from {@code @Validate} annotation.
+     * If field annotated with {@code @Regex(".*")} and {@code @Validate} will generate next
+     * code:
+     * <code>
+     *     if (validatable != null && !validatable.getRegex().matches(".*")) {
+     *         return false;
+     *     }
+     * </code>
+     * <p>
+     * In addition to {@code @Regex} annotation exists {@code @Email} and {@code @Password}
+     * annotations, that can use for validation email address and password.
+     * For email exists 3 ready-to-use implementations: {@see SimpleEmailSpecification},
+     * {@see HtmlEmailSpecification} and {@see RfcEmailSpecification}.
+     * For password exists 3 ready-to-use implementations: {@see SimplePasswordSpecification},
+     * {@see DefaultPasswordSpecification}, {@see StrongPasswordSpecification} and custom
+     * {@see CustomPasswordSpecification}.
      *
      * @param validatable The object to be checked for validity
      * @return The result of checking the object for validity
