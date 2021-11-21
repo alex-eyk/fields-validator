@@ -8,13 +8,11 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @AutoService(Processor.class)
-public class ValidatorProcessor extends AbstractProcessor {
+public final class ValidatorProcessor extends AbstractProcessor {
 
     private Elements elementUtils;
     private Filer filer;
@@ -41,18 +39,20 @@ public class ValidatorProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        final Set<? extends Element> annotatedClasses = roundEnv
+        final Set<? extends Element> annotatedTypes = roundEnv
                 .getElementsAnnotatedWith(Validatable.class);
-        for (Element element : annotatedClasses) {
+        for (Element annotatedType : annotatedTypes) {
             try {
-                final TypeElement typeElement = (TypeElement) element;
-                final List<ValidateField> validatableFields = new ArrayList<>();
+                final TypeElement typeElement = (TypeElement) annotatedType;
+                final Set<ValidateField> validatableFields = new HashSet<>();
                 for (Element enclosedElement : elementUtils.getAllMembers(typeElement)) {
                     final Validate validate = enclosedElement.getAnnotation(Validate.class);
                     if (validate == null) {
                         continue;
                     }
-                    validatableFields.add(ValidateField.createByValidate(enclosedElement, validate));
+                    validatableFields.add(
+                            ValidateFieldFactory.createByValidate(enclosedElement, validate)
+                    );
                 }
                 final ValidatorCodeGenerator codeGenerator = new ValidatorCodeGenerator(elementUtils, filer);
                 codeGenerator.generate(typeElement, validatableFields);

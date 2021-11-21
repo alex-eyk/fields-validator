@@ -3,12 +3,12 @@ package com.ximand.impl;
 import com.ximand.Validator;
 import com.ximand.impl.spec.Specification;
 
-abstract class SpecificationValidator implements Validator<String> {
+public class RegexValidator implements Validator<String> {
 
     private final String regex;
 
-    public SpecificationValidator(Specification specification) {
-        this.regex = specification.toRegex();
+    public RegexValidator(String regex) {
+        this.regex = regex;
     }
 
     @Override

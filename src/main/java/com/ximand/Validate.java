@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @author Aleksej Kiselev
  */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 public @interface Validate {
 
     /**

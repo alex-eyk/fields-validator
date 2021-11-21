@@ -3,12 +3,13 @@ package com.ximand;
 import com.squareup.javapoet.*;
 
 import javax.annotation.processing.Filer;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 final class ValidatorCodeGenerator {
 
@@ -18,19 +19,20 @@ final class ValidatorCodeGenerator {
     private final Filer filer;
 
     private TypeElement validateType;
-    private List<ValidateField> validateFields;
+    private Set<ValidateField> validateFields;
 
     ValidatorCodeGenerator(Elements elementUtils, Filer filer) {
         this.elementUtils = elementUtils;
         this.filer = filer;
     }
 
-    void generate(TypeElement validateType, List<ValidateField> validatableFields) throws IOException {
+    void generate(TypeElement validateType, Set<ValidateField> validatableFields) throws IOException {
         this.validateType = validateType;
         this.validateFields = validatableFields;
-        JavaFile.builder(getElementPackage(), generateValidatorType())
-                .build()
-                .writeTo(filer);
+        JavaFile file = JavaFile.builder(getElementPackage(), generateValidatorType())
+                .indent("    ")
+                .build();
+        file.writeTo(filer);
     }
 
     private String getElementPackage() {
@@ -57,10 +59,20 @@ final class ValidatorCodeGenerator {
     private MethodSpec generateValidateMethod() {
         final ValidateMethodBuilder methodBuilder = new ValidateMethodBuilder(elementUtils, validateType);
         for (ValidateField validateField : validateFields) {
-            methodBuilder.addConditionsChecks(validateField);
+            final String getter =  findGetter(validateType, validateField.getElement());
+            methodBuilder.addConditionsChecks(validateField, getter);
         }
         return methodBuilder.build();
     }
 
-
+    private String findGetter(Element annotatedType, Element field) {
+        final String getterName = ReflectUtils.getGetterMethodName(field.getSimpleName().toString());
+        final String method = ReflectUtils.findMethod(elementUtils, annotatedType, getterName);
+        if (method != null) {
+            return method;
+        } else {
+            throw new IllegalStateException("Unable to find public getter: `" + getterName
+                    + "` in class: `" + annotatedType + "`");
+        }
+    }
 }

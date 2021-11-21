@@ -9,19 +9,15 @@ class ValidateField {
 
     private final Element element;
 
-    private boolean notNull = true;
-    private int minSize = DEF_MIN_SIZE;
-    private int maxSize = DEF_MAX_SIZE;
+    private final boolean notNull;
+    private final int minSize;
+    private final int maxSize;
 
-    ValidateField(Element element) {
+    ValidateField(Element element, Validate validate) {
         this.element = element;
-    }
-
-    static ValidateField createByValidate(Element element, Validate validate) {
-        return new ValidateField(element)
-                .setNotNull(validate.notNull())
-                .setMinSize(validate.minSize())
-                .setMaxSize(validate.maxSize());
+        this.notNull = validate.notNull();
+        this.minSize = validate.minSize();
+        this.maxSize = validate.maxSize();
     }
 
     Element getElement() {
@@ -32,26 +28,12 @@ class ValidateField {
         return notNull;
     }
 
-    ValidateField setNotNull(boolean notNull) {
-        this.notNull = notNull;
-        return this;
-    }
-
     int getMinSize() {
         return minSize;
-    }
-
-    ValidateField setMinSize(int minSize) {
-        this.minSize = minSize;
-        return this;
     }
 
     int getMaxSize() {
         return maxSize;
     }
 
-    ValidateField setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-        return this;
-    }
 }
