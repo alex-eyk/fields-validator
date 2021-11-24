@@ -15,6 +15,8 @@ public @interface Regex {
 
     /**
      * Regular expression witch will use in {@code validate(T t)} method.
+     *
+     * @return Regular expression for validate field.
      */
     String value() default "";
 

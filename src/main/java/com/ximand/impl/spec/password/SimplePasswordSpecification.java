@@ -6,7 +6,8 @@ package com.ximand.impl.spec.password;
  */
 public final class SimplePasswordSpecification implements PasswordSpecification {
 
-    private static final String PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d_\\.@$!%*#?&]{8,255}$";
+    private static final String PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d_\\.\\(\\)\\[\\]\\|\\{\\}\\+@\\^\\$!\\/" +
+            "\\-%%\\*#\\?&\\\\]{8,255}$";
 
     @Override
     public String toRegex() {

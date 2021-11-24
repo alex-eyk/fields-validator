@@ -20,9 +20,7 @@ public @interface Password {
      * Also exists {@code CUSTOM} implementation. If it user, should be passed values
      * {@code minLength}, {@code maxLength}, {@code lowerCase}, etc.
      *
-     * @see com.ximand.impl.spec.password.SimplePasswordSpecification
-     * @see com.ximand.impl.spec.password.DefaultPasswordSpecification
-     * @see com.ximand.impl.spec.password.StrongPasswordSpecification
+     * @return Specification of validatable password.
      */
     PasswordSpec value() default PasswordSpec.DEFAULT;
 

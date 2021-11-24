@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.ximand'
-version '2.0.0'
+version '2.0.1'
 
 repositories {
     mavenCentral()
@@ -11,11 +11,21 @@ repositories {
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Implementation-Version': version
+        attributes 'Implementation-Title': 'Jar',
+                'Implementation-Version': archiveVersion
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier('docs')
+    from docsDir
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier('sources')
+    from sourceSets.main.allSource
 }
 
 dependencies {

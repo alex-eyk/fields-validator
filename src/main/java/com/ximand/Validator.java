@@ -21,29 +21,35 @@ public interface Validator<T> {
      * are checked for validity in it as follows:
      * <p>
      * For not {@code null} fields will generate next code:
-     * <code>
+     * <pre>
+     * {@code
      *     if (validatable.getField() == null) {
      *         return false;
      *     }
-     * </code>
+     * }
+     * </pre>
      * <p>
      * If field value should be limited in size and field can not be {@code null}, in
      * addition to the previous will generate next code (for example, {@code minSize = 10}):
-     * <code>
-     *     if (validatable.getField().length() < 10) {
+     * <pre>
+     * {@code
+     *     if (validatable.getField().length() {@literal <} 10) {
      *         return false;
      *     }
-     * </code>
+     * }
+     * </pre>
      * The same code will be generated for the {@code maxValue}. Difference in sign of
      * inequality.
      * <p>
      * <b>An important nuance.</b> If field can be {@code null}, but limited in size, will
      * generate next code:
-     * <code>
-     *     if (validatable.getField() != null && validatable.getField().length() < 10) {
+     * <pre>
+     * {@code
+     *     if (validatable.getField() != null {@literal &&} validatable.getField().length() {@literal <} 10) {
      *         return false;
      *     }
-     * </code>
+     * }
+     * </pre>
      * That is, if the field is limited in size, but has null reference {@code null}, <b>it
      * will be considered valid</b>
      * <p>
@@ -52,19 +58,20 @@ public interface Validator<T> {
      * Will also validate conditions from {@code @Validate} annotation.
      * If field annotated with {@code @Regex(".*")} and {@code @Validate} will generate next
      * code:
-     * <code>
-     *     if (validatable != null && !validatable.getRegex().matches(".*")) {
+     * <pre>
+     * {@code
+     *     if (validatable != null {@literal &&} !validatable.getRegex().matches(".*")) {
      *         return false;
      *     }
-     * </code>
+     * }
+     * </pre>
      * <p>
      * In addition to {@code @Regex} annotation exists {@code @Email} and {@code @Password}
      * annotations, that can use for validation email address and password.
-     * For email exists 3 ready-to-use implementations: {@see SimpleEmailSpecification},
-     * {@see HtmlEmailSpecification} and {@see RfcEmailSpecification}.
-     * For password exists 3 ready-to-use implementations: {@see SimplePasswordSpecification},
-     * {@see DefaultPasswordSpecification}, {@see StrongPasswordSpecification} and custom
-     * {@see CustomPasswordSpecification}.
+     * For email exists 3 ready-to-use implementations {@link com.ximand.impl.spec.email.EmailSpec}:
+     * simple specification, HTML and RFC.
+     * For password exists 3 ready-to-use implementations {@link com.ximand.impl.spec.password.PasswordSpec}:
+     * simple specification, default, strong and custom.
      *
      * @param validatable The object to be checked for validity
      * @return The result of checking the object for validity

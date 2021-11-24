@@ -7,8 +7,8 @@ import java.util.Set;
 import static com.ximand.ValidateUtils.checkNotNegative;
 
 /**
- * If prepared specifications ({@see DefaultPasswordSpecification}, {@see SimplePasswordSpecification}
- * or {@see StrongPasswordSpecification} are not suitable for use, then you can use this custom
+ * If prepared specifications ({@link DefaultPasswordSpecification}, {@link SimplePasswordSpecification}
+ * or {@link StrongPasswordSpecification}) are not suitable for use, then you can use this custom
  * specification, setting the required number of characters yourself.
  */
 public final class CustomPasswordSpecification implements PasswordSpecification {
@@ -29,9 +29,9 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     private int specialChars = 0;
 
     /**
-     * Set minimum length of password.
-     *
+     * @param minLength Minimum length of password.
      * @throws IllegalArgumentException Length can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setMinLength(int minLength) {
         this.minLength = checkNotNegative(minLength);
@@ -39,9 +39,9 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set maximum length of password.
-     *
+     * @param maxLength Maximum length of password.
      * @throws IllegalArgumentException Length can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setMaxLength(int maxLength) {
         this.maxLength = checkNotNegative(maxLength);
@@ -49,9 +49,9 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set minimum number of lower case characters in password.
-     *
+     * @param lowerCaseChars minimum number of lower case chars (a-z) which should be contains password.
      * @throws IllegalArgumentException Number can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setLowerCaseChars(int lowerCaseChars) {
         this.lowerCaseChars = checkNotNegative(lowerCaseChars);
@@ -59,9 +59,9 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set minimum number of upper case characters in password.
-     *
+     * @param upperCaseChars minimum number of upper case chars (A-Z) which should be contains password.
      * @throws IllegalArgumentException Number can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setUpperCaseChars(int upperCaseChars) {
         this.upperCaseChars = checkNotNegative(upperCaseChars);
@@ -69,9 +69,9 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
     }
 
     /**
-     * Set minimum number of digits characters in password.
-     *
+     * @param digitChars minimum number of digits which should be contains password.
      * @throws IllegalArgumentException Number can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setDigitChars(int digitChars) {
         this.digitChars = checkNotNegative(digitChars);
@@ -80,11 +80,13 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
 
     /**
      * Set minimum number of special characters in password. The following special characters can
-     * be used: '@', '$', '!', '%', '*', '#', '?', '&'. These values can be changed using the
-     * methods {@code setAllowedSpecialChars(String allowedSpecialChars) or
-     * {@code setAllowedSpecialChars(char[] allowedSpecialChars)}.
+     * be used: '_', '.', '(', ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%',
+     * '*', '#', '?', '{@literal &}', '\'. These values can be changed using the methods
+     * {@code setAllowedSpecialChars(String allowedSpecialChars)} or {@code setAllowedSpecialChars(char[] allowedSpecialChars)}.
      *
+     * @param specialChars minimum number of special chars which should be contains password.
      * @throws IllegalArgumentException Number can not be negative.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setSpecialChars(int specialChars) {
         this.specialChars = checkNotNegative(specialChars);
@@ -93,9 +95,10 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
 
     /**
      * Set special characters, that can be use in password. By default can be user: '_', '.', '(',
-     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '&', '\'
+     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '{@literal &}', '\'
      *
      * @param allowedSpecialChars A string of special characters that can be used (e.g. "@$!").
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setAllowedSpecialChars(String allowedSpecialChars) {
         if (allowedSpecialChars == null) {
@@ -107,9 +110,10 @@ public final class CustomPasswordSpecification implements PasswordSpecification 
 
     /**
      * Set special characters, that can be use in password. By default can be user: '_', '.', '(',
-     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '&', '\'
+     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '{@literal &}', '\'
      *
      * @param allowedSpecialChars An array of special characters that can be used.
+     * @return A reference to this object.
      */
     public CustomPasswordSpecification setAllowedSpecialChars(char[] allowedSpecialChars) {
         if (allowedSpecialChars == null) {

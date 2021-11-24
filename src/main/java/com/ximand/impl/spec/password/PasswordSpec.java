@@ -15,8 +15,8 @@ public enum PasswordSpec {
 
     /**
      * Specification of password, which contains at least 8 characters, of which at least 1 upper
-     * case characters, 1 lower case characters, 1 digits and 1 special symbols ('_', '.', '@', '$',
-     * '!', '%', '*', '#', '?', '&').
+     * case characters, 1 lower case characters, 1 digits and 1 special symbols '_', '.', '(', ')',
+     * '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '{@literal &}', '\'.
      *
      * @see DefaultPasswordSpecification
      */
@@ -24,8 +24,8 @@ public enum PasswordSpec {
 
     /**
      * Specification of password, which contains at least 10 characters, of which at least 2 upper
-     * case characters, 2 lower case characters, 2 digits and 2 special symbols ('_', '.', '@', '$',
-     * '!', '%', '*', '#', '?', '&').
+     * case characters, 2 lower case characters, 2 digits and 2 special symbols '_', '.', '(',
+     * ')', '[', ']', '|', '{', '}', '+', '@', '^', '$', '!', '/', '-', '%', '*', '#', '?', '{@literal &}', '\'
      *
      * @see StrongPasswordSpecification
      */

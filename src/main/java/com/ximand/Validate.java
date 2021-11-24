@@ -16,19 +16,23 @@ import java.lang.annotation.Target;
 public @interface Validate {
 
     /**
-     * Equals {@code true}, if value can not be null. Other {@code false}.
+     * @return {@code true}, if value can not be null, in other case {@code false}.
      */
     boolean notNull() default false;
 
     /**
-     * Minimum size of value. This property works for {@code String} (in this case, the
-     * number of characters in the string will be validate, {@code Collection} and arrays.
+     * This property works for {@code String} (in this case, the number of characters in the string
+     * will be validate, {@code Collection} and arrays.
+     *
+     * @return Minimum size of value.
      */
     int minSize() default 0;
 
     /**
-     * Maximum size of value. This property works for {@code String} (in this case, the
-     * number of characters in the string will be validate, {@code Collection} and array.
+     * This property works for {@code String} (in this case, the number of characters in the string
+     * will be validate, {@code Collection} and array.
+     *
+     * @return Maximum size of value.
      */
     int maxSize() default Integer.MAX_VALUE;
 
