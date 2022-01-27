@@ -1,6 +1,8 @@
 # fields-validator
 Annotation processor for objects validation intended for null and size checks, regex, password, and email checks.
 
+You can read this in [Russian](README.ru.md).
+
 ## Validate
 All you need to do is annotate the required validatable class and its fields:
 ```java
