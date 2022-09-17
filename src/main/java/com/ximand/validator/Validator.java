@@ -1,4 +1,4 @@
-package com.ximand;
+package com.ximand.validator;
 
 /**
  * Responsible for validating required fields of some object. The validatable object
@@ -68,9 +68,9 @@ public interface Validator<T> {
      * <p>
      * In addition to {@code @Regex} annotation exists {@code @Email} and {@code @Password}
      * annotations, that can use for validation email address and password.
-     * For email exists 3 ready-to-use implementations {@link com.ximand.impl.spec.email.EmailSpec}:
+     * For email exists 3 ready-to-use implementations {@link com.ximand.spec.email.EmailSpec}:
      * simple specification, HTML and RFC.
-     * For password exists 3 ready-to-use implementations {@link com.ximand.impl.spec.password.PasswordSpec}:
+     * For password exists 3 ready-to-use implementations {@link com.ximand.spec.password.PasswordSpec}:
      * simple specification, default, strong and custom.
      *
      * @param validatable The object to be checked for validity

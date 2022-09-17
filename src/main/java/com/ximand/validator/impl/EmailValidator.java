@@ -1,6 +1,6 @@
-package com.ximand.impl;
+package com.ximand.validator.impl;
 
-import com.ximand.impl.spec.email.EmailSpecification;
+import com.ximand.spec.email.EmailSpecification;
 
 public final class EmailValidator extends RegexValidator {
 

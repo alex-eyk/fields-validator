@@ -1,6 +1,6 @@
 package com.ximand.annotation;
 
-import com.ximand.impl.spec.password.PasswordSpec;
+import com.ximand.spec.password.PasswordSpec;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

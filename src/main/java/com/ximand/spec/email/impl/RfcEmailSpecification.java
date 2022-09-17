@@ -1,4 +1,6 @@
-package com.ximand.impl.spec.email;
+package com.ximand.spec.email.impl;
+
+import com.ximand.spec.email.EmailSpecification;
 
 /**
  * Full compatible regular expression for validate email address created by standard RFC822 is

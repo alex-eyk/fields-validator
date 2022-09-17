@@ -1,6 +1,7 @@
 package com.ximand;
 
 import com.squareup.javapoet.*;
+import com.ximand.validator.Validator;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.Element;

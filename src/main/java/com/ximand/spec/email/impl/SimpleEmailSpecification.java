@@ -1,4 +1,6 @@
-package com.ximand.impl.spec.email;
+package com.ximand.spec.email.impl;
+
+import com.ximand.spec.email.EmailSpecification;
 
 /**
  * In most cases the html standard is also redundant, most users do not use special characters,

@@ -1,6 +1,7 @@
 package com.ximand.impl.spec.password;
 
-import com.ximand.impl.PasswordValidator;
+import com.ximand.validator.impl.PasswordValidator;
+import com.ximand.spec.password.impl.DefaultPasswordSpecification;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

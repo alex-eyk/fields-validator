@@ -1,6 +1,6 @@
 package com.ximand.annotation;
 
-import com.ximand.impl.spec.email.EmailSpec;
+import com.ximand.spec.email.EmailSpec;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

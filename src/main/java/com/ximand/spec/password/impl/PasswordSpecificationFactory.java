@@ -1,4 +1,7 @@
-package com.ximand.impl.spec.password;
+package com.ximand.spec.password.impl;
+
+import com.ximand.spec.password.PasswordSpec;
+import com.ximand.spec.password.PasswordSpecification;
 
 public final class PasswordSpecificationFactory {
 

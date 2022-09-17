@@ -1,4 +1,4 @@
-package com.ximand.impl.spec.email;
+package com.ximand.spec.email;
 
 /**
  * @see EmailSpecification
@@ -10,7 +10,7 @@ public enum EmailSpec {
      * addresses, but does not correspond to the standard. Can recognize some existing email
      * addresses as invalid, however the probability is very low.
      *
-     * @see SimpleEmailSpecification
+     * @see com.ximand.spec.email.impl.SimpleEmailSpecification
      */
     SIMPLE,
 
@@ -19,7 +19,7 @@ public enum EmailSpec {
      * standard was created because of RFC standard is very redundancy. Regular expression
      * is larger than {@code SIMPLE}.
      *
-     * @see HtmlEmailSpecification
+     * @see com.ximand.spec.email.impl.HtmlEmailSpecification
      */
     HTML,
 
@@ -27,7 +27,7 @@ public enum EmailSpec {
      * Validation using very large regular expression, that correspond to RFC standard. Works
      * with all email addresses, but very redundancy.
      *
-     * @see RfcEmailSpecification
+     * @see com.ximand.spec.email.impl.RfcEmailSpecification
      */
     RFC
 }

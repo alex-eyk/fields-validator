@@ -1,7 +1,6 @@
-package com.ximand.impl;
+package com.ximand.validator.impl;
 
-import com.ximand.Validator;
-import com.ximand.impl.spec.Specification;
+import com.ximand.validator.Validator;
 
 public class RegexValidator implements Validator<String> {
 

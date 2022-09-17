@@ -1,6 +1,6 @@
-package com.ximand.impl;
+package com.ximand.validator.impl;
 
-import com.ximand.impl.spec.password.PasswordSpecification;
+import com.ximand.spec.password.PasswordSpecification;
 
 public final class PasswordValidator extends RegexValidator {
 

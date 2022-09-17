@@ -1,4 +1,4 @@
-package com.ximand.impl.spec;
+package com.ximand.spec;
 
 /**
  * Specification of string, which contains information that can be used for it's validation.

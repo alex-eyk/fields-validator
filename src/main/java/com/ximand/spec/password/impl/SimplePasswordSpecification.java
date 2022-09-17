@@ -1,4 +1,6 @@
-package com.ximand.impl.spec.password;
+package com.ximand.spec.password.impl;
+
+import com.ximand.spec.password.PasswordSpecification;
 
 /**
  * Specification of password, which contains at least 8 characters, of which at least 1 character

@@ -1,4 +1,6 @@
-package com.ximand.impl.spec.email;
+package com.ximand.spec.email.impl;
+
+import com.ximand.spec.email.EmailSpecification;
 
 /**
  * RFC 5322 defines a syntax for email addresses that is both too strict before the '@' symbol,

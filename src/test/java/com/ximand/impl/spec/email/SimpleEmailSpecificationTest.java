@@ -1,6 +1,7 @@
 package com.ximand.impl.spec.email;
 
-import com.ximand.impl.EmailValidator;
+import com.ximand.validator.impl.EmailValidator;
+import com.ximand.spec.email.impl.SimpleEmailSpecification;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

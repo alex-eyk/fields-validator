@@ -1,4 +1,6 @@
-package com.ximand.impl.spec.password;
+package com.ximand.spec.password.impl;
+
+import com.ximand.spec.password.PasswordSpecification;
 
 import java.util.Arrays;
 import java.util.HashSet;

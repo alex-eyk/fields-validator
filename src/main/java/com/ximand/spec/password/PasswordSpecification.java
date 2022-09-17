@@ -1,6 +1,6 @@
-package com.ximand.impl.spec.password;
+package com.ximand.spec.password;
 
-import com.ximand.impl.spec.Specification;
+import com.ximand.spec.Specification;
 
 /**
  * Specification used for password validation.

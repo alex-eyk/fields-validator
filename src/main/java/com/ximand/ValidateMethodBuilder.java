@@ -4,7 +4,7 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
-import com.ximand.impl.spec.password.PasswordSpec;
+import com.ximand.spec.password.PasswordSpec;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
