@@ -26,6 +26,7 @@ class ValidateMethodBuilder {
     private final ClassName passwordFactory = ClassName.get("com.ximand.spec.password.impl", "PasswordSpecificationFactory");
     private final ClassName passwordSpec = ClassName.get("com.ximand.spec.password", "PasswordSpec");
     private final ClassName customSpec = ClassName.get("com.ximand.spec.password.impl", "CustomPasswordSpecification");
+    private final ClassName uuidValidator = ClassName.get("com.ximand.validator.impl", "UUIDValidator");
 
     private final MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(VALIDATE_METHOD_NAME);
     private final Elements elementUtils;
@@ -65,6 +66,8 @@ class ValidateMethodBuilder {
             addEmailCheck((EmailValidateField) validateField);
         } else if (validateField instanceof PasswordValidateField) {
             addPasswordCheck((PasswordValidateField) validateField);
+        } else if (validateField instanceof UUIDValidateField) {
+            addUUIDCheck((UUIDValidateField) validateField);
         }
     }
 
@@ -112,6 +115,17 @@ class ValidateMethodBuilder {
                 .endControlFlow();
     }
 
+    void addUUIDCheck(UUIDValidateField field) {
+        this.variables += 1;
+        final int version = field.getVersion();
+        methodBuilder.addCode(
+                CodeBlock.builder()
+                        .add("final $T var$L = new $T($L);\n", uuidValidator, variables, uuidValidator, version)
+                        .build()
+        );
+        addValidatorControlFlow();
+    }
+
     void addEmailCheck(EmailValidateField field) {
         final String specName = field.getEmailSpec().name();
         addValidatorCheck(emailValidator, emailFactory, emailSpecs, specName);
@@ -134,6 +148,10 @@ class ValidateMethodBuilder {
                                 validator, variables, validator, factory, spec, specName)
                         .build()
         );
+        addValidatorControlFlow();
+    }
+
+    private void addValidatorControlFlow() {
         methodBuilder.beginControlFlow("if (validatable != null && !var$L.validate(validatable.$L))", variables, getter)
                 .addStatement("return false")
                 .endControlFlow();
@@ -165,5 +183,4 @@ class ValidateMethodBuilder {
                 .addStatement("return true")
                 .build();
     }
-
 }

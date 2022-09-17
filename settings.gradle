@@ -1,2 +1,3 @@
 rootProject.name = 'fields-validator'
+include 'test-module'
 

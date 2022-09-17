@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.ximand'
-version '3.0s2'
+version '3.0s3'
 
 repositories {
     mavenCentral()
