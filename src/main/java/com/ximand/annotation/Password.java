@@ -1,4 +1,4 @@
-package com.ximand;
+package com.ximand.annotation;
 
 import com.ximand.impl.spec.password.PasswordSpec;
 

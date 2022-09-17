@@ -1,5 +1,7 @@
 package com.ximand;
 
+import com.ximand.annotation.Validate;
+
 import javax.lang.model.element.Element;
 
 class ValidateField {

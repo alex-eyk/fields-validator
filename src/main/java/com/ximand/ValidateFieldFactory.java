@@ -1,5 +1,10 @@
 package com.ximand;
 
+import com.ximand.annotation.Email;
+import com.ximand.annotation.Password;
+import com.ximand.annotation.Regex;
+import com.ximand.annotation.Validate;
+
 import javax.lang.model.element.Element;
 
 public final class ValidateFieldFactory {

@@ -1,5 +1,8 @@
 package com.ximand;
 
+import com.ximand.annotation.Regex;
+import com.ximand.annotation.Validate;
+
 import javax.lang.model.element.Element;
 
 public class RegexValidateField extends ValidateField {
@@ -15,6 +18,10 @@ public class RegexValidateField extends ValidateField {
         return regex;
     }
 
+    /**
+     * @deprecated Use constructor parameters to set regex.
+     */
+    @Deprecated
     public RegexValidateField setRegex(String regex) {
         this.regex = regex;
         return this;

@@ -1,6 +1,8 @@
 package com.ximand;
 
 import com.google.auto.service.AutoService;
+import com.ximand.annotation.Validatable;
+import com.ximand.annotation.Validate;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;

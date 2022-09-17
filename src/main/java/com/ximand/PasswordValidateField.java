@@ -1,5 +1,7 @@
 package com.ximand;
 
+import com.ximand.annotation.Password;
+import com.ximand.annotation.Validate;
 import com.ximand.impl.spec.password.PasswordSpec;
 
 import javax.lang.model.element.Element;

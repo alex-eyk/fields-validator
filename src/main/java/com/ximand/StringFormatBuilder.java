@@ -8,7 +8,7 @@ final class StringFormatBuilder {
         this.stringBuilder = new StringBuilder();
     }
 
-    public StringFormatBuilder(String str) {
+    StringFormatBuilder(String str) {
         this.stringBuilder = new StringBuilder(str);
     }
 

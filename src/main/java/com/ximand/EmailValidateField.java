@@ -1,5 +1,7 @@
 package com.ximand;
 
+import com.ximand.annotation.Email;
+import com.ximand.annotation.Validate;
 import com.ximand.impl.spec.email.EmailSpec;
 
 import javax.lang.model.element.Element;
