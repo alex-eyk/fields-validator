@@ -19,13 +19,13 @@ class ValidateMethodBuilder {
             "length", "length()", "size()"
     };
 
-    final ClassName emailValidator = ClassName.get("com.ximand.impl", "EmailValidator");
-    final ClassName emailFactory = ClassName.get("com.ximand.impl.spec.email", "EmailSpecificationFactory");
-    final ClassName emailSpecs = ClassName.get("com.ximand.impl.spec.email", "EmailSpec");
-    final ClassName passwordValidator = ClassName.get("com.ximand.impl", "PasswordValidator");
-    final ClassName passwordFactory = ClassName.get("com.ximand.impl.spec.password", "PasswordSpecificationFactory");
-    final ClassName passwordSpec = ClassName.get("com.ximand.impl.spec.password", "PasswordSpec");
-    final ClassName customSpec = ClassName.get("com.ximand.impl.spec.password", "CustomPasswordSpecification");
+    private final ClassName emailValidator = ClassName.get("com.ximand.validator.impl", "EmailValidator");
+    private final ClassName emailFactory = ClassName.get("com.ximand.spec.email.impl", "EmailSpecificationFactory");
+    private final ClassName emailSpecs = ClassName.get("com.ximand.spec.email", "EmailSpec");
+    private final ClassName passwordValidator = ClassName.get("com.ximand.validator.impl", "PasswordValidator");
+    private final ClassName passwordFactory = ClassName.get("com.ximand.spec.password.impl", "PasswordSpecificationFactory");
+    private final ClassName passwordSpec = ClassName.get("com.ximand.spec.password", "PasswordSpec");
+    private final ClassName customSpec = ClassName.get("com.ximand.spec.password.impl", "CustomPasswordSpecification");
 
     private final MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(VALIDATE_METHOD_NAME);
     private final Elements elementUtils;
